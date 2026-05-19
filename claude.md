@@ -42,7 +42,7 @@ To enable kill switch, memory refreshal happens every x minutes. 15 minutes coul
 
 secrets naming `{randomId}/auth/encryption-keys/shard_1` to `{randomId}/auth/encryption-keys/shard_6`
 
-Each tenant requires ~ 334 bytes of data. Each AWS secret can store 65,536 bytes. Allocating 175 secrets per secret, 6 secrets needed to store 1000 tenants
+Each tenant requires ~ 334 bytes of data. Each AWS secret can store 65,536 bytes. Allocating 175 secrets per secret, 6 secrets needed to store 1050 tenants
 
 value of `{randomId}` is stored in param store `/encryption-keys-random-id`
 
@@ -86,7 +86,7 @@ value of `{randomId}` is stored in param store `/encryption-keys-random-id`
    6. Generate hashed_kid from `crypto.createHash("sha256").update(tid).digest("hex")`
    7. hashed_kid is a key for JSON object that contains following {"tid":"random_UUID", "new Date().getTime()":"crypto.randomUUID()"}. Here timestamp represents `epoch_timestamp_as_ref`
    8. Create 6 secrets with above Array as mentioned in Data section
-   9. invoke `api-handler` lambda asychronously (only in 1st iteration)
+   9. invoke `api-handler` lambda asynchronously (only in 1st iteration)
    10. Wait for a minute and go for next iteration
    11. From this iteration#2, retrieve secrets and add additional `epoch_timestamp_as_ref` until 4 keys are generated. Later delete the oldest ref (FIFO basis) and add a new one.
    12. Update the secrets
