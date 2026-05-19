@@ -112,7 +112,7 @@ value of `{randomId}` is stored in param store `/encryption-keys-random-id`
    - `CACHE_REFRESH_IN_SECONDS`("180")
    - `ENCRYPTION_KEYS_SECRET`("auth/encryption-keys/shard\_")
    - `ENCRYPTION_KEYS_SHARD_COUNT` (6)
-   - `ENCRYPTION_SECRET_PREFIX_PARAM`
+   - `ENCRYPTION_SECRET_PREFIX_PARAM` (`/encryption-keys-random-id`)
    1. During cold-start, it downloads all 6 secrets using Promise.all() and merge them as a single JSON. This JSON contains 1050 keys each representing a tenant hashed_kid
    2. It needs to define a global variable `startTime` with epoch timestamp as value
    3. In the handler function, first check difference between `startTime` and current timestamp. If > `CACHE_REFRESH_IN_SECONDS`, then downloads all 6 secrets and refresh the memory of keys
