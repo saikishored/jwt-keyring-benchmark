@@ -93,7 +93,7 @@ export class TokenRotatorStack extends cdk.Stack {
         "index.ts",
       ),
       handler: "handler",
-      runtime: lambda.Runtime.NODEJS_22_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       role,
       timeout: cdk.Duration.minutes(15),
       memorySize: 256,

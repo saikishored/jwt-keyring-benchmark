@@ -52,7 +52,7 @@ export class HelloServiceStack extends cdk.Stack {
         "index.ts",
       ),
       handler: "handler",
-      runtime: lambda.Runtime.NODEJS_22_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       role,
       timeout: cdk.Duration.seconds(5),
       memorySize: 128,

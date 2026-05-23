@@ -66,7 +66,7 @@ export class ApiHandlerStack extends cdk.Stack {
       functionName: "key-ring-api-handler",
       entry: path.join(__dirname, "..", "..", "src", "api-handler", "index.ts"),
       handler: "handler",
-      runtime: lambda.Runtime.NODEJS_22_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       role,
       // 6 shards × 2-minute pause + API call time — needs close to max timeout
       timeout: cdk.Duration.seconds(900),

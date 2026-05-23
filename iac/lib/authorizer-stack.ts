@@ -62,7 +62,7 @@ export class AuthorizerStack extends cdk.Stack {
       functionName: "key-ring-authorizer",
       entry: path.join(__dirname, "..", "..", "src", "authorizer", "index.ts"),
       handler: "handler",
-      runtime: lambda.Runtime.NODEJS_22_X,
+      runtime: lambda.Runtime.NODEJS_24_X,
       role,
       timeout: cdk.Duration.seconds(15),
       memorySize: 256,
