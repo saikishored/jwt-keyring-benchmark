@@ -87,7 +87,7 @@ value of `{randomId}` is stored in param store `/encryption-keys-random-id`
    7. hashed_kid is a key for JSON object that contains following {"tid":"random_UUID", "new Date().getTime()":"crypto.randomUUID()"}. Here timestamp represents `epoch_timestamp_as_ref`
    8. Create 6 secrets with above Array as mentioned in Data section
    9. invoke `api-handler` lambda asynchronously (only in 1st iteration)
-   10. Wait for a minute and go for next iteration
+   10. Wait for 100 seconds and go for next iteration
    11. From this iteration#2, retrieve secrets and add additional `epoch_timestamp_as_ref` until 4 keys are generated. Later delete the oldest ref (FIFO basis) and add a new one.
    12. Update the secrets
    13. Repeat Step 10 and complete the iterations in the same way
@@ -102,7 +102,7 @@ value of `{randomId}` is stored in param store `/encryption-keys-random-id`
    2. For every iteration `n`, it retrieves secret `${randomId}/auth/encryption-keys/shard_n` and parse secret value
    3. For each `hashed_kid` in JSON, take the secret from latest `epoch_timestamp_as_ref` and generates an signed JWT cookie (5 minutes expiry). JWT to be in standard format, payload contains `tid` attribute with value from secret. It should also contain standard other standard attributes like `claims`. In metadata, value of `kid` should be `hashed_kid` and should have additional attribute `ref`, which is latest `epoch_timestamp_as_ref`(ref key with highest epoch value).
    4. Make an API caller to API Gateway route `GET /key-ring-test` by setting header `Cookie`. Use Promise.all() to make all calls at once
-   5. Once response received, wait for 2 minutes using setTimeOut method
+   5. Once response received, wait for 2 minutes using sleep method
    6. Complete all iterations in the same way
    7. After completing all iterations, delete all 6 secrets and also param as a clean up exercise
 
