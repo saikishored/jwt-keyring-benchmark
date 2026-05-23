@@ -1,0 +1,221 @@
+{
+  "/KeyRingHelloServiceStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/KeyRingDeployment": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KeyRingDeployment"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "HelloServiceStack.createRouteWithDeployment (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:95:27)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:26:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/KeyRingStage": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KeyRingStage"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "HelloServiceStack.createRouteWithDeployment (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:104:5)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:26:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/HelloServiceFunctionArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "HelloServiceFunctionArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "HelloServiceStack.setOutput (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:121:5)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:29:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/ApiUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "HelloServiceStack.setOutput (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:125:5)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:29:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/HelloServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "HelloServiceRoleE7A1B138"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "HelloServiceStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:33:12)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:24:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/HelloServiceFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "HelloServiceFunction8D1F83E6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "HelloServiceStack.createHelloFunction (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:44:12)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:25:32)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImportedApikeyringtestC1DD642D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "HelloServiceStack.createRouteWithDeployment (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:81:39)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:26:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/GET/ApiPermission.KeyRingHelloServiceStackImportedApiD951BF41.GET..key-ring-test": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImportedApikeyringtestGETApiPermissionKeyRingHelloServiceStackImportedApiD951BF41GETkeyringtest08DA99FA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "HelloServiceStack.createRouteWithDeployment (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:82:29)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:26:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/GET/ApiPermission.Test.KeyRingHelloServiceStackImportedApiD951BF41.GET..key-ring-test": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImportedApikeyringtestGETApiPermissionTestKeyRingHelloServiceStackImportedApiD951BF41GETkeyringtestCE9C83AF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "HelloServiceStack.createRouteWithDeployment (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:82:29)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:26:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ImportedApikeyringtestGETEC266DF9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "HelloServiceStack.createRouteWithDeployment (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:82:29)",
+        "new HelloServiceStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\hello-service-stack.ts:26:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:41:27)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ]
+}

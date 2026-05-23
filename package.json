@@ -1,20 +1,26 @@
 {
-  "name": "jwt-keyring-benchmark-src",
+  "name": "jwt-keyring-benchmark",
   "version": "0.1.0",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "cdk": "cdk"
   },
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.0.0",
     "@aws-sdk/client-secrets-manager": "^3.0.0",
     "@aws-sdk/client-ssm": "^3.0.0",
+    "aws-cdk-lib": "^2.180.0",
     "aws-xray-sdk-core": "^3.10.0",
+    "constructs": "^10.0.0",
     "jsonwebtoken": "^9.0.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.0",
     "@types/jsonwebtoken": "^9.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.19.19",
+    "aws-cdk": "^2.180.0",
+    "esbuild": "^0.28.0",
+    "ts-node": "^10.9.0",
     "typescript": "^5.7.0"
   }
 }

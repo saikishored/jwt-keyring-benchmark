@@ -1,0 +1,20 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "62b86de97530d040fef43b6dd58a49ca6a3d1cdc59ccb38b9a33b6982cafb9c8": {
+      "displayName": "KeyRingApiGatewayStack Template",
+      "source": {
+        "path": "KeyRingApiGatewayStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-60a31839": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "62b86de97530d040fef43b6dd58a49ca6a3d1cdc59ccb38b9a33b6982cafb9c8.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

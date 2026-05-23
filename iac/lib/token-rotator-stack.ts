@@ -16,7 +16,10 @@ export class TokenRotatorStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: TokenRotatorStackProps) {
     super(scope, id, props);
 
-    const role = this.createExecutionRole(props.apiHandlerFunction, props.benchmarkConfig);
+    const role = this.createExecutionRole(
+      props.apiHandlerFunction,
+      props.benchmarkConfig,
+    );
     const tokenRotatorFunction = this.createTokenRotatorFunction(
       role,
       props.apiHandlerFunction.functionArn,
@@ -26,7 +29,10 @@ export class TokenRotatorStack extends cdk.Stack {
     this.setOutput(tokenRotatorFunction);
   }
 
-  private createExecutionRole(apiHandlerFunction: lambda.Function, config: BenchmarkConfig): iam.Role {
+  private createExecutionRole(
+    apiHandlerFunction: lambda.Function,
+    config: BenchmarkConfig,
+  ): iam.Role {
     const role = new iam.Role(this, "TokenRotatorRole", {
       assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
       managedPolicies: [
@@ -78,7 +84,14 @@ export class TokenRotatorStack extends cdk.Stack {
   ): NodejsFunction {
     return new NodejsFunction(this, "TokenRotatorFunction", {
       functionName: "key-ring-token-rotator",
-      entry: path.join(__dirname, "../../src/token-rotator/index.ts"),
+      entry: path.join(
+        __dirname,
+        "..",
+        "..",
+        "src",
+        "token-rotator",
+        "index.ts",
+      ),
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_22_X,
       role,
@@ -92,7 +105,7 @@ export class TokenRotatorStack extends cdk.Stack {
         API_HANDLER_FUNCTION_ARN: apiHandlerFunctionArn,
       },
       bundling: {
-        minify: true,
+        minify: false,
         externalModules: [],
       },
     });
@@ -112,8 +125,9 @@ export class TokenRotatorStack extends cdk.Stack {
       }),
     );
 
-    // Runs every hour; EndDate stops the schedule after 10 cycles (~11 hours from deploy)
-    const scheduleEndDate = new Date(Date.now() + 11 * 60 * 60 * 1000);
+    // Starts 15 min after deploy; EndDate stops after 10 cycles (~11h 15m from deploy)
+    const scheduleStartDate = new Date(Date.now() + 5 * 60 * 1000);
+    const scheduleEndDate = new Date(Date.now() + (11 * 60 + 15) * 60 * 1000);
 
     new scheduler.CfnSchedule(this, "TokenRotatorSchedule", {
       name: "key-ring-token-rotator-hourly",
@@ -121,6 +135,7 @@ export class TokenRotatorStack extends cdk.Stack {
         "Triggers key rotation cycle every hour for 10 hours of benchmark data",
       scheduleExpression: "rate(1 hour)",
       flexibleTimeWindow: { mode: "OFF" },
+      startDate: scheduleStartDate.toISOString(),
       endDate: scheduleEndDate.toISOString(),
       state: "ENABLED",
       target: {

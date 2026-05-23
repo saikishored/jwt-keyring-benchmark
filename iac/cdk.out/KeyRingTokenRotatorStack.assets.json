@@ -1,0 +1,34 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "69e61ca84a7f1e3dc1e16a6fac72888e9efed146a4014dabc61a30849362643a": {
+      "displayName": "TokenRotatorFunction/Code",
+      "source": {
+        "path": "C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-69084e10": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "69e61ca84a7f1e3dc1e16a6fac72888e9efed146a4014dabc61a30849362643a.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "09c53d5afa3fb746cbeda6a1608b6f270d083dd609c295a82fbcdd4021022c9a": {
+      "displayName": "KeyRingTokenRotatorStack Template",
+      "source": {
+        "path": "KeyRingTokenRotatorStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-68cbf298": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "09c53d5afa3fb746cbeda6a1608b6f270d083dd609c295a82fbcdd4021022c9a.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

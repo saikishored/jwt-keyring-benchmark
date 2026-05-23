@@ -1,0 +1,547 @@
+{
+ "Resources": {
+  "TokenRotatorRole6B1C607A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/TokenRotatorRole/Resource"
+   }
+  },
+  "TokenRotatorRoleDefaultPolicy57A1FE7C": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "secretsmanager:CreateSecret",
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:UpdateSecret",
+        "secretsmanager:DeleteSecret"
+       ],
+       "Effect": "Allow",
+       "Resource": "*"
+      },
+      {
+       "Action": [
+        "ssm:PutParameter",
+        "ssm:GetParameter",
+        "ssm:DeleteParameter"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:aws:ssm:",
+          {
+           "Ref": "AWS::Region"
+          },
+          ":",
+          {
+           "Ref": "AWS::AccountId"
+          },
+          ":parameter/encryption-keys-random-id"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "KeyRingApiHandlerStack:ExportsOutputFnGetAttApiHandlerFunction9E589C02ArnD1EC489A"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "TokenRotatorRoleDefaultPolicy57A1FE7C",
+    "Roles": [
+     {
+      "Ref": "TokenRotatorRole6B1C607A"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/TokenRotatorRole/DefaultPolicy/Resource"
+   }
+  },
+  "TokenRotatorFunction54EB6C9C": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "69e61ca84a7f1e3dc1e16a6fac72888e9efed146a4014dabc61a30849362643a.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "ENCRYPTION_SECRET_PREFIX_PARAM": "/encryption-keys-random-id",
+      "ENCRYPTION_KEYS_SECRET": "auth/encryption-keys/shard_",
+      "ENCRYPTION_KEYS_SHARD_COUNT": "6",
+      "TENANTS_PER_SHARD": "175",
+      "API_HANDLER_FUNCTION_ARN": {
+       "Fn::ImportValue": "KeyRingApiHandlerStack:ExportsOutputFnGetAttApiHandlerFunction9E589C02ArnD1EC489A"
+      }
+     }
+    },
+    "FunctionName": "key-ring-token-rotator",
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "TokenRotatorRole6B1C607A",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "TokenRotatorRoleDefaultPolicy57A1FE7C",
+    "TokenRotatorRole6B1C607A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/TokenRotatorFunction/Resource",
+    "aws:asset:path": "C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "SchedulerInvokeRoleE2A7D616": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "scheduler.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/SchedulerInvokeRole/Resource"
+   }
+  },
+  "SchedulerInvokeRoleDefaultPolicy29DAA443": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "TokenRotatorFunction54EB6C9C",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "SchedulerInvokeRoleDefaultPolicy29DAA443",
+    "Roles": [
+     {
+      "Ref": "SchedulerInvokeRoleE2A7D616"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/SchedulerInvokeRole/DefaultPolicy/Resource"
+   }
+  },
+  "TokenRotatorSchedule": {
+   "Type": "AWS::Scheduler::Schedule",
+   "Properties": {
+    "Description": "Triggers key rotation cycle every hour for 10 hours of benchmark data",
+    "EndDate": "2026-05-23T22:25:12.393Z",
+    "FlexibleTimeWindow": {
+     "Mode": "OFF"
+    },
+    "Name": "key-ring-token-rotator-hourly",
+    "ScheduleExpression": "rate(1 hour)",
+    "StartDate": "2026-05-23T11:15:12.393Z",
+    "State": "ENABLED",
+    "Target": {
+     "Arn": {
+      "Fn::GetAtt": [
+       "TokenRotatorFunction54EB6C9C",
+       "Arn"
+      ]
+     },
+     "RetryPolicy": {
+      "MaximumRetryAttempts": 2
+     },
+     "RoleArn": {
+      "Fn::GetAtt": [
+       "SchedulerInvokeRoleE2A7D616",
+       "Arn"
+      ]
+     }
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/TokenRotatorSchedule"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WNQQ6CMBREz+K+fLHEuBYSl2rgAORTChZKa/itxBDubgokrt7MJC/DgZ8vEB9wokjUfaRVBXPhUPQMJypnhQPMudWSZY1Z+bRaiW+oW1qYxqGqsTS2lh3BfcXNG+GUNYySEomkI7gGMEog9aKXLkWSuwpZY/6CeMnaazmGtdjLwla7cNgq04bzh3dv7xYWXqGj44dzOHGIDx0pFY3eODVIyDf+AKZPajrmAAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingTokenRotatorStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "TokenRotatorFunctionArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "TokenRotatorFunction54EB6C9C",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "KeyRingTokenRotatorFunctionArn"
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

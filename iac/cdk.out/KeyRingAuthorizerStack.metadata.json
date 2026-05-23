@@ -1,0 +1,157 @@
+{
+  "/KeyRingAuthorizerStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:28:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/AuthorizerFunctionArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthorizerFunctionArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "AuthorizerStack.setOutput (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:94:5)",
+        "new AuthorizerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:24:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:28:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/AuthorizerRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthorizerRole8EA4615E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "AuthorizerStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:28:18)",
+        "new AuthorizerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:18:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:28:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/AuthorizerFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthorizerFunctionB4DBAA43"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "AuthorizerStack.createAuthorizerFunction (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:61:12)",
+        "new AuthorizerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:19:36)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:28:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/AuthorizerFunction/AllowApiGatewayInvoke": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthorizerFunctionAllowApiGatewayInvoke384EA272"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...NodejsFunction.addPermission in aws-cdk-lib...",
+        "AuthorizerStack.grantApiGatewayInvoke (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:87:29)",
+        "new AuthorizerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:23:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:28:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/Exports/Output{\"Fn::GetAtt\":[\"AuthorizerFunctionB4DBAA43\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttAuthorizerFunctionB4DBAA43Arn5B39D673"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingAuthorizerStack/AuthorizerRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthorizerRoleDefaultPolicyE4B7F89A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "AuthorizerStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:38:10)",
+        "new AuthorizerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\authorizer-stack.ts:18:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:28:25)"
+      ]
+    }
+  ]
+}

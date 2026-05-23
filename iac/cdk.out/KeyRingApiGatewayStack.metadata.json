@@ -1,0 +1,210 @@
+{
+  "/KeyRingApiGatewayStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:34:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/AuthorizerFunctionRef": [
+    {
+      "type": "aws:cdk:warning",
+      "data": "addPermission() has no effect on a Lambda Function with region=${Token[TOKEN.58]}, account=${Token[TOKEN.59]}, in a Stack with region=${Token[AWS.Region.13]}, account=${Token[AWS.AccountId.9]}. Suppress this warning if this is intentional, or pass sameEnvironment=true to fromFunctionAttributes() if you would like to add the permissions. [ack: UnclearLambdaEnvironment]",
+      "trace": [
+        "Annotations.addMessage (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:2399)",
+        "Annotations.addWarningV2 (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1087)",
+        "Import.addPermission (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\aws-lambda\\lib\\function-base.js:2:332)",
+        "WrappedClass.addDefaultPermissionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\aws-apigateway\\lib\\authorizers\\lambda.js:1:4333)",
+        "WrappedClass.setupPermissions (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\aws-apigateway\\lib\\authorizers\\lambda.js:1:4266)",
+        "new RequestAuthorizer2 (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\aws-apigateway\\lib\\authorizers\\lambda.js:1:9455)",
+        "new RequestAuthorizer2 (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\aws-cdk-lib\\core\\lib\\prop-injectable.js:1:855)",
+        "ApiGatewayStack.createRequestAuthorizer (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:59:12)",
+        "new ApiGatewayStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:19:35)",
+        "Object.<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:34:25)",
+        "Module._compile (node:internal/modules/cjs/loader:1565:14)",
+        "Module.m._compile (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\ts-node\\src\\index.ts:1618:23)",
+        "node:internal/modules/cjs/loader:1708:10",
+        "Object.require.extensions.<computed> [as .ts] (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\ts-node\\src\\index.ts:1621:12)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:219:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "phase4 (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\ts-node\\src\\bin.ts:649:14)",
+        "bootstrap (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\ts-node\\src\\bin.ts:95:10)",
+        "main (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\ts-node\\src\\bin.ts:55:10)",
+        "Object.<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\node_modules\\ts-node\\src\\bin.ts:800:3)",
+        "Module._compile (node:internal/modules/cjs/loader:1565:14)",
+        "Object.<anonymous> (node:internal/modules/cjs/loader:1708:10)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:219:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "node:internal/main/run_main_module:36:49"
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/KeyRingBenchmarkApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KeyRingBenchmarkApiFBBC4014"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "ApiGatewayStack.createRestApi (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:31:17)",
+        "new ApiGatewayStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:18:25)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:34:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/KeyRingBenchmarkApi/Account": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KeyRingBenchmarkApiAccountEB10FC08"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "ApiGatewayStack.createRestApi (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:31:17)",
+        "new ApiGatewayStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:18:25)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:34:25)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/KeyRingRequestAuthorizer/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KeyRingRequestAuthorizerB2265193"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RequestAuthorizer2 in aws-cdk-lib...",
+        "ApiGatewayStack.createRequestAuthorizer (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:59:12)",
+        "new ApiGatewayStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:19:35)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:34:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/Exports/Output{\"Fn::GetAtt\":[\"KeyRingBenchmarkApiFBBC4014\",\"RootResourceId\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttKeyRingBenchmarkApiFBBC4014RootResourceId6CE4FC95"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/Exports/Output{\"Ref\":\"KeyRingBenchmarkApiFBBC4014\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/Exports/Output{\"Ref\":\"KeyRingRequestAuthorizerB2265193\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefKeyRingRequestAuthorizerB2265193F59EDF82"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiGatewayStack/KeyRingBenchmarkApi/CloudWatchRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "KeyRingBenchmarkApiCloudWatchRole859371AD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "ApiGatewayStack.createRestApi (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:31:17)",
+        "new ApiGatewayStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-gateway-stack.ts:18:25)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:34:25)",
+        "...node internals..."
+      ]
+    }
+  ]
+}

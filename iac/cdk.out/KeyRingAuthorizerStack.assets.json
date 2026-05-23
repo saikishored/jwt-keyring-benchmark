@@ -1,0 +1,34 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "e6ac2e8e1f39337c2b9332268d0c3723075f21b5fc117c930570b65ad578ee13": {
+      "displayName": "AuthorizerFunction/Code",
+      "source": {
+        "path": "C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-df0257ea": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "e6ac2e8e1f39337c2b9332268d0c3723075f21b5fc117c930570b65ad578ee13.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "ad0b0db8b2a31166dd452454d1a37274e26ac6fdbb68fb46157994b7982e2006": {
+      "displayName": "KeyRingAuthorizerStack Template",
+      "source": {
+        "path": "KeyRingAuthorizerStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-91af807a": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "ad0b0db8b2a31166dd452454d1a37274e26ac6fdbb68fb46157994b7982e2006.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

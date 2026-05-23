@@ -1,0 +1,173 @@
+{
+  "/KeyRingTokenRotatorStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/TokenRotatorSchedule": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TokenRotatorSchedule"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "TokenRotatorStack.createEventBridgeSchedule (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:132:5)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:28:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/TokenRotatorFunctionArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TokenRotatorFunctionArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "TokenRotatorStack.setOutput (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:152:5)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:29:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/TokenRotatorRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TokenRotatorRole6B1C607A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "TokenRotatorStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:36:18)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:19:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/TokenRotatorFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TokenRotatorFunction54EB6C9C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "TokenRotatorStack.createTokenRotatorFunction (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:85:12)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:23:39)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/SchedulerInvokeRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SchedulerInvokeRoleE2A7D616"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "TokenRotatorStack.createEventBridgeSchedule (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:117:27)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:28:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/TokenRotatorRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "TokenRotatorRoleDefaultPolicy57A1FE7C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "TokenRotatorStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:45:10)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:19:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)"
+      ]
+    }
+  ],
+  "/KeyRingTokenRotatorStack/SchedulerInvokeRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SchedulerInvokeRoleDefaultPolicy29DAA443"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "TokenRotatorStack.createEventBridgeSchedule (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:121:19)",
+        "new TokenRotatorStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\token-rotator-stack.ts:28:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:58:1)"
+      ]
+    }
+  ]
+}

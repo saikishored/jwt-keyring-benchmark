@@ -1,0 +1,592 @@
+{
+ "Resources": {
+  "HelloServiceRoleE7A1B138": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/HelloServiceRole/Resource"
+   }
+  },
+  "HelloServiceFunction8D1F83E6": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "d882470866db7fcda7a34cc55b32f3922dc032abfcc6e2e5958ce86c641010cc.zip"
+    },
+    "FunctionName": "key-ring-hello-service",
+    "Handler": "index.handler",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "HelloServiceRoleE7A1B138",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs22.x",
+    "Timeout": 5
+   },
+   "DependsOn": [
+    "HelloServiceRoleE7A1B138"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/HelloServiceFunction/Resource",
+    "aws:asset:path": "C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ImportedApikeyringtestC1DD642D": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputFnGetAttKeyRingBenchmarkApiFBBC4014RootResourceId6CE4FC95"
+    },
+    "PathPart": "key-ring-test",
+    "RestApiId": {
+     "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/Resource"
+   }
+  },
+  "ImportedApikeyringtestGETApiPermissionKeyRingHelloServiceStackImportedApiD951BF41GETkeyringtest08DA99FA": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "HelloServiceFunction8D1F83E6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+       },
+       "/*/GET/key-ring-test"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/GET/ApiPermission.KeyRingHelloServiceStackImportedApiD951BF41.GET..key-ring-test"
+   }
+  },
+  "ImportedApikeyringtestGETApiPermissionTestKeyRingHelloServiceStackImportedApiD951BF41GETkeyringtestCE9C83AF": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "HelloServiceFunction8D1F83E6",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+       },
+       "/test-invoke-stage/GET/key-ring-test"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/GET/ApiPermission.Test.KeyRingHelloServiceStackImportedApiD951BF41.GET..key-ring-test"
+   }
+  },
+  "ImportedApikeyringtestGETEC266DF9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "CUSTOM",
+    "AuthorizerId": {
+     "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingRequestAuthorizerB2265193F59EDF82"
+    },
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "HelloServiceFunction8D1F83E6",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "ImportedApikeyringtestC1DD642D"
+    },
+    "RestApiId": {
+     "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/ImportedApi/Default/key-ring-test/GET/Resource"
+   }
+  },
+  "KeyRingDeployment": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "RestApiId": {
+     "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+    }
+   },
+   "DependsOn": [
+    "ImportedApikeyringtestGETEC266DF9"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/KeyRingDeployment"
+   }
+  },
+  "KeyRingStage": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "KeyRingDeployment"
+    },
+    "MethodSettings": [
+     {
+      "DataTraceEnabled": false,
+      "HttpMethod": "*",
+      "MetricsEnabled": true,
+      "ResourcePath": "/*"
+     }
+    ],
+    "RestApiId": {
+     "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+    },
+    "StageName": "benchmark",
+    "TracingEnabled": true
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/KeyRingStage"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WPyWrDQBBEv8X3UceRCTnbCr5lQf4A0ZZaSmuZEeqeCDPMv4dRNnJ6VQUFVTnkD4+w3+EqWd0M2chXCBfFejC4ShUYJwilG8kUrU2MZsTp2mBlXUO9wMuGs7e1srNGDhWKkAocE4wc4OTrgfSEQt9VCEVrfxtFa99omViEnY0GZ+5QacUbhJJEjzNv1ZLE+aWmf2Yb9aOfSd9dk6I/9UTz6G4TWU3uothRjGablgzbLuWvXmev0aRL0MvdR57DfQ77XS/M2eKt8kRQfvETk+Fi7jIBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "KeyRingHelloServiceStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "HelloServiceFunctionArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "HelloServiceFunction8D1F83E6",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "KeyRingHelloServiceFunctionArn"
+   }
+  },
+  "ApiUrl": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Fn::ImportValue": "KeyRingApiGatewayStack:ExportsOutputRefKeyRingBenchmarkApiFBBC4014DCBD6756"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".amazonaws.com/benchmark/"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": "KeyRingBenchmarkApiUrl"
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

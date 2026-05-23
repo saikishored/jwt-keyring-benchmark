@@ -1,0 +1,34 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "d882470866db7fcda7a34cc55b32f3922dc032abfcc6e2e5958ce86c641010cc": {
+      "displayName": "HelloServiceFunction/Code",
+      "source": {
+        "path": "C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-3b85da29": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "d882470866db7fcda7a34cc55b32f3922dc032abfcc6e2e5958ce86c641010cc.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "a7d42b6ed3ad9d4cedac5b903e6943c20f0ebb0c62822c72abd24dba9c924bf4": {
+      "displayName": "KeyRingHelloServiceStack Template",
+      "source": {
+        "path": "KeyRingHelloServiceStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-1e1c12df": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "a7d42b6ed3ad9d4cedac5b903e6943c20f0ebb0c62822c72abd24dba9c924bf4.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

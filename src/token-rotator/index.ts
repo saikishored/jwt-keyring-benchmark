@@ -14,24 +14,39 @@ const SECRET_PREFIX = process.env.ENCRYPTION_KEYS_SECRET!;
 const PARAM_NAME = process.env.ENCRYPTION_SECRET_PREFIX_PARAM!;
 const API_HANDLER_FUNCTION_ARN = process.env.API_HANDLER_FUNCTION_ARN!;
 const MAX_EPOCH_REFS_PER_TENANT = 4;
-const INTER_SHARD_PAUSE_MS = 100 * 1000; // 100s wait between shard iterations (api-handler loops every 2 min)
+const INTER_ROUND_PAUSE_MS = 100 * 1000; // 100s between rotation rounds; api-handler loops every 2 min
+const ROTATION_ROUNDS = 6; // rounds per invocation; matches api-handler shard batch count
 
 const lambdaClient = new LambdaClient({});
 
 export const handler = async (): Promise<void> => {
+  console.log("[token-rotator] handler started");
   const existingRandomId = await getRandomIdParam(PARAM_NAME);
+  console.log(
+    `[token-rotator] randomId from param store: ${existingRandomId ?? "null — first run"}`,
+  );
 
   if (existingRandomId === null) {
-    await handleFirstCycle();
+    console.log("[token-rotator] no existing randomId — starting from scratch");
+    await runCycleFromScratch();
   } else {
-    await handleRotationCycle(existingRandomId);
+    console.log(
+      "[token-rotator] existing randomId found — running rotation cycle",
+    );
+    await runRotationCycle(existingRandomId);
   }
+  console.log("[token-rotator] handler complete");
 };
 
-async function handleFirstCycle(): Promise<void> {
+// First-ever EventBridge trigger: create all shards then run 5 more rotation rounds
+async function runCycleFromScratch(): Promise<void> {
   const randomId = crypto.randomBytes(8).toString("hex");
+  console.log(`[token-rotator] generated randomId: ${randomId}`);
   await putRandomIdParam(PARAM_NAME, randomId);
+  console.log(`[token-rotator] stored randomId in param store`);
 
+  // Round 1: create all 6 shards in parallel, fire api-handler async, then sleep
+  console.log(`[token-rotator] round 1/${ROTATION_ROUNDS}: generating ${SHARD_COUNT} shards (${TENANTS_PER_SHARD} tenants each)`);
   const shards = Array.from({ length: SHARD_COUNT }, () =>
     generateShardKeyRing(),
   );
@@ -40,21 +55,57 @@ async function handleFirstCycle(): Promise<void> {
       createShardSecret(buildSecretName(randomId, index + 1), shard),
     ),
   );
-
+  console.log(`[token-rotator] round 1: all ${SHARD_COUNT} shards created in secrets manager`);
   await invokeApiHandlerAsync();
-}
+  console.log(`[token-rotator] round 1: api-handler invoked asynchronously`);
+  console.log(`[token-rotator] round 1: sleeping ${INTER_ROUND_PAUSE_MS / 1000}s`);
+  await sleep(INTER_ROUND_PAUSE_MS);
 
-async function handleRotationCycle(randomId: string): Promise<void> {
-  for (let shardIndex = 1; shardIndex <= SHARD_COUNT; shardIndex++) {
-    const secretName = buildSecretName(randomId, shardIndex);
-    const existingKeyRing = await fetchShardSecret(secretName);
-    const rotatedKeyRing = rotateEpochRefsAcrossShard(existingKeyRing);
-    await updateShardSecret(secretName, rotatedKeyRing);
-
-    if (shardIndex < SHARD_COUNT) {
-      await sleep(INTER_SHARD_PAUSE_MS);
+  // Rounds 2-6: rotate all shards in parallel, 100s between rounds
+  for (let round = 2; round <= ROTATION_ROUNDS; round++) {
+    console.log(`[token-rotator] round ${round}/${ROTATION_ROUNDS}: rotating all shards`);
+    await rotateAllShards(randomId);
+    console.log(`[token-rotator] round ${round}: rotation complete`);
+    if (round < ROTATION_ROUNDS) {
+      console.log(`[token-rotator] round ${round}: sleeping ${INTER_ROUND_PAUSE_MS / 1000}s`);
+      await sleep(INTER_ROUND_PAUSE_MS);
     }
   }
+}
+
+// Subsequent EventBridge triggers: 6 rotation rounds, api-handler fired on round 1
+async function runRotationCycle(randomId: string): Promise<void> {
+  // Round 1: rotate + kick off api-handler for this benchmark cycle
+  console.log(`[token-rotator] round 1/${ROTATION_ROUNDS}: rotating all shards`);
+  await rotateAllShards(randomId);
+  console.log(`[token-rotator] round 1: rotation complete`);
+  await invokeApiHandlerAsync();
+  console.log(`[token-rotator] round 1: api-handler invoked asynchronously`);
+  console.log(`[token-rotator] round 1: sleeping ${INTER_ROUND_PAUSE_MS / 1000}s`);
+  await sleep(INTER_ROUND_PAUSE_MS);
+
+  // Rounds 2-6: rotate while api-handler runs concurrently
+  for (let round = 2; round <= ROTATION_ROUNDS; round++) {
+    console.log(`[token-rotator] round ${round}/${ROTATION_ROUNDS}: rotating all shards`);
+    await rotateAllShards(randomId);
+    console.log(`[token-rotator] round ${round}: rotation complete`);
+    if (round < ROTATION_ROUNDS) {
+      console.log(`[token-rotator] round ${round}: sleeping ${INTER_ROUND_PAUSE_MS / 1000}s`);
+      await sleep(INTER_ROUND_PAUSE_MS);
+    }
+  }
+}
+
+// Rotate all 6 shards in parallel — one rotation round
+async function rotateAllShards(randomId: string): Promise<void> {
+  await Promise.all(
+    Array.from({ length: SHARD_COUNT }, async (_, i) => {
+      const secretName = buildSecretName(randomId, i + 1);
+      const existingKeyRing = await fetchShardSecret(secretName);
+      const rotatedKeyRing = rotateEpochRefsAcrossShard(existingKeyRing);
+      await updateShardSecret(secretName, rotatedKeyRing);
+    }),
+  );
 }
 
 function generateShardKeyRing(): KeyRing {

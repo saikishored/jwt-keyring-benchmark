@@ -1,0 +1,141 @@
+{
+  "/KeyRingApiHandlerStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:52:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/ApiHandlerFunctionArn": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandlerFunctionArn"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "ApiHandlerStack.setOutput (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:88:5)",
+        "new ApiHandlerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:25:10)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:52:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)"
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/ApiHandlerRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandlerRole7074C5BF"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "ApiHandlerStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:29:18)",
+        "new ApiHandlerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:19:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:52:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/ApiHandlerFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandlerFunction9E589C02"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new NodejsFunction in aws-cdk-lib...",
+        "ApiHandlerStack.createApiHandlerFunction (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:65:12)",
+        "new ApiHandlerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:20:36)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:52:25)",
+        "...node internals, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/Exports/Output{\"Fn::GetAtt\":[\"ApiHandlerFunction9E589C02\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttApiHandlerFunction9E589C02ArnD1EC489A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:63:5)",
+        "...node internals, ts-node..."
+      ]
+    }
+  ],
+  "/KeyRingApiHandlerStack/ApiHandlerRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ApiHandlerRoleDefaultPolicyF271343D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.<anonymous> in aws-cdk-lib...",
+        "ApiHandlerStack.createExecutionRole (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:38:10)",
+        "new ApiHandlerStack (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\lib\\api-handler-stack.ts:19:23)",
+        "<anonymous> (C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark\\iac\\bin\\app.ts:52:25)"
+      ]
+    }
+  ]
+}

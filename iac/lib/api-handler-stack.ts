@@ -17,7 +17,11 @@ export class ApiHandlerStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: ApiHandlerStackProps) {
     super(scope, id, props);
     const role = this.createExecutionRole(props.benchmarkConfig);
-    this.apiHandlerFunction = this.createApiHandlerFunction(role, props.apiUrl, props.benchmarkConfig);
+    this.apiHandlerFunction = this.createApiHandlerFunction(
+      role,
+      props.apiUrl,
+      props.benchmarkConfig,
+    );
     this.setOutput();
   }
 
@@ -60,7 +64,7 @@ export class ApiHandlerStack extends cdk.Stack {
   ): NodejsFunction {
     return new NodejsFunction(this, "ApiHandlerFunction", {
       functionName: "key-ring-api-handler",
-      entry: path.join(__dirname, "../../src/api-handler/index.ts"),
+      entry: path.join(__dirname, "..", "..", "src", "api-handler", "index.ts"),
       handler: "handler",
       runtime: lambda.Runtime.NODEJS_22_X,
       role,
@@ -74,7 +78,7 @@ export class ApiHandlerStack extends cdk.Stack {
         API_URL: apiUrl,
       },
       bundling: {
-        minify: true,
+        minify: false,
         externalModules: [],
       },
     });

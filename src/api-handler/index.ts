@@ -12,25 +12,43 @@ const JWT_TTL_SECONDS = 300; // 5-minute token lifetime
 const INTER_BATCH_PAUSE_MS = 2 * 60 * 1000; // 2-minute pause between shard batches
 
 export const handler = async (): Promise<void> => {
+  console.log("[api-handler] handler started");
+  console.log(`[api-handler] API_URL: ${API_URL}`);
   const randomId = await getRandomIdParam(RANDOM_ID_PARAM_NAME);
   if (!randomId)
     throw new Error(
       "randomId not found in param store — token-rotator must run first",
     );
 
+  console.log(`[api-handler] randomId: ${randomId}`);
   await dispatchAllShardBatches(randomId);
+  console.log("[api-handler] all shard batches complete — starting cleanup");
   await cleanupBenchmarkResources(randomId);
+  console.log("[api-handler] cleanup complete — handler done");
 };
 
 async function dispatchAllShardBatches(randomId: string): Promise<void> {
   for (let shardIndex = 1; shardIndex <= SHARD_COUNT; shardIndex++) {
     const secretName = `${randomId}/${SECRET_PREFIX}${shardIndex}`;
+    console.log(
+      `[api-handler] shard ${shardIndex}/${SHARD_COUNT}: fetching secret ${secretName}`,
+    );
     const shardKeyRing = await fetchShardSecret(secretName);
+    const tenantCount = Object.keys(shardKeyRing).length;
+    console.log(
+      `[api-handler] shard ${shardIndex}: ${tenantCount} tenants found — minting tokens`,
+    );
 
     const tenantTokens = mintTenantTokensForShard(shardKeyRing);
+    console.log(
+      `[api-handler] shard ${shardIndex}: making ${tenantTokens.length} API calls to ${API_URL}key-ring-test`,
+    );
     await callApiGatewayWithBatch(tenantTokens);
 
     if (shardIndex < SHARD_COUNT) {
+      console.log(
+        `[api-handler] shard ${shardIndex}: sleeping ${INTER_BATCH_PAUSE_MS / 1000}s before next shard`,
+      );
       await sleep(INTER_BATCH_PAUSE_MS);
     }
   }
@@ -86,7 +104,7 @@ function signTenantJwt(
 async function callApiGatewayWithBatch(tenantTokens: string[]): Promise<void> {
   const endpoint = `${API_URL}key-ring-test`;
 
-  await Promise.all(
+  const responses = await Promise.all(
     tenantTokens.map((token) =>
       fetch(endpoint, {
         method: "GET",
@@ -94,15 +112,27 @@ async function callApiGatewayWithBatch(tenantTokens: string[]): Promise<void> {
       }),
     ),
   );
+
+  const statusCounts: Record<number, number> = {};
+  for (const res of responses) {
+    statusCounts[res.status] = (statusCounts[res.status] ?? 0) + 1;
+  }
+  console.log(
+    `[api-handler] response status summary: ${JSON.stringify(statusCounts)}`,
+  );
 }
 
 async function cleanupBenchmarkResources(randomId: string): Promise<void> {
+  console.log(
+    `[api-handler] deleting ${SHARD_COUNT} secrets and param store entry`,
+  );
   await Promise.all(
     Array.from({ length: SHARD_COUNT }, (_, i) =>
       deleteShardSecret(`${randomId}/${SECRET_PREFIX}${i + 1}`),
     ),
   );
   await deleteRandomIdParam(RANDOM_ID_PARAM_NAME);
+  console.log("[api-handler] cleanup done");
 }
 
 function sleep(ms: number): Promise<void> {

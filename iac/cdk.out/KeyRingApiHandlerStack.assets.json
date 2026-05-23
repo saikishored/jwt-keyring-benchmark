@@ -1,0 +1,34 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "5d03bf2beac0505c7fa732d526aec55e44e8b45f327abfa17fbfbc8d351f72f8": {
+      "displayName": "ApiHandlerFunction/Code",
+      "source": {
+        "path": "C:\\Users\\Sai Kishore\\Documents\\ditrobiz\\repos\\workings\\blogs\\jwt-key-ring\\jwt-keyring-benchmark",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-b0b59444": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "5d03bf2beac0505c7fa732d526aec55e44e8b45f327abfa17fbfbc8d351f72f8.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "8d35dbf4d479ce26b4174185174ec2c42c5f5d54f165cccaa2053eb3a3d7d050": {
+      "displayName": "KeyRingApiHandlerStack Template",
+      "source": {
+        "path": "KeyRingApiHandlerStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-fcbc9387": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "8d35dbf4d479ce26b4174185174ec2c42c5f5d54f165cccaa2053eb3a3d7d050.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
