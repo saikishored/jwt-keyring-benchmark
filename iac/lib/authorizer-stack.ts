@@ -65,7 +65,7 @@ export class AuthorizerStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_24_X,
       role,
       timeout: cdk.Duration.seconds(15),
-      memorySize: 256,
+      memorySize: 768,
       tracing: lambda.Tracing.ACTIVE,
       environment: {
         CACHE_REFRESH_IN_SECONDS: String(config.cacheRefreshInSeconds),
