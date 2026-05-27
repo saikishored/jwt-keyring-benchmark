@@ -1,3 +1,17 @@
+## ⚠️ This repo has been superseded
+
+This was an early exploration of the JWT Key Ring Pattern.
+
+The refined implementation — **In-Memory JWKS Authorization with BYOK** —
+is available at: https://github.com/saikishored/jwks-byok
+
+The new repo covers:
+
+- Epoch-based key rotation pattern
+- Per-tenant BYOK with hashed_tid
+- EKS + ElastiCache Serverless + DynamoDB
+- Full blog series walkthrough
+
 # jwt-keyring-benchmark
 
 Benchmarks the JWT Key Ring pattern at p50 / p90 / p99 latency across three
